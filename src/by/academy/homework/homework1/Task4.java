@@ -7,6 +7,7 @@
  * Дмитрий Веремей
  */
 package by.academy.homework.homework1;
+
 import java.lang.Math;
 
 public class Task4 {

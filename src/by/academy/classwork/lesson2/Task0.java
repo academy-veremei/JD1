@@ -6,6 +6,7 @@
  * Дмитрий Веремей
  */
 package by.academy.classwork.lesson2;
+
 import java.util.Scanner;
 
 class Task0{

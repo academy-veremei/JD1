@@ -7,6 +7,7 @@
  * Дмитрий Веремей
  */
 package by.academy.homework.homework1;
+
 import java.util.Scanner;
 
 public class Task3 {
