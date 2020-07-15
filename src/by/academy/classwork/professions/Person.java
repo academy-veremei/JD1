@@ -1,6 +1,6 @@
 package by.academy.classwork.professions;
 
-public class Person extends Driver {
+public class Person {
     private int age;
 
     public Person() {

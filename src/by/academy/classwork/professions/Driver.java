@@ -1,6 +1,6 @@
 package by.academy.classwork.professions;
 
-public class Driver {
+public class Driver extends Person{
     private String driverFullName;
     private int driverExperience;
 
