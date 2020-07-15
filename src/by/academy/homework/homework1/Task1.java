@@ -21,30 +21,30 @@ public class Task1 {
         System.out.println("Возраст:");
         age = scanner.nextInt();
         scanner.close();
-        if(amount<100){
+        if (amount < 100) {
             discount = amount * 0.05f;
             amount = amount - discount;
-            System.out.println("Финальная цена: "+amount);
-        }else if(amount >= 100 && amount < 200){
+            System.out.println("Финальная цена: " + amount);
+        } else if (amount >= 100 && amount < 200) {
             discount = amount * 0.07f;
             amount = amount - discount;
-            System.out.println("Финальная цена: "+amount);
-        }else if(amount >= 200 && amount<300){
-            if(age>18) {
+            System.out.println("Финальная цена: " + amount);
+        } else if (amount >= 200 && amount < 300) {
+            if (age > 18) {
                 discount = amount * 0.16f;
-            }else {
+            } else {
                 discount = amount * 0.09f;
             }
             amount = amount - discount;
             System.out.println("Финальная цена: " + amount);
-        }else if(amount >= 300 && amount < 400){
-            discount = amount*0.15f;
+        } else if (amount >= 300 && amount < 400) {
+            discount = amount * 0.15f;
             amount = amount - discount;
-            System.out.println("Финальная цена: "+amount);
-        }else if(amount >= 400){
+            System.out.println("Финальная цена: " + amount);
+        } else if (amount >= 400) {
             discount = amount * 0.2f;
             amount = amount - discount;
-            System.out.println("Финальная цена: "+amount);
+            System.out.println("Финальная цена: " + amount);
         }
     }
 }
