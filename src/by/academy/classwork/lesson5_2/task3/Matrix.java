@@ -5,9 +5,7 @@ public class Matrix {
    private int matrixColumn;
    protected int[][] matrix;
 
-   private int resultString;
-   private int resultColumn;
-   private int[][] result;
+
 
    public Matrix(){
        super();
@@ -19,60 +17,42 @@ public class Matrix {
        this.matrixString = matrix.length;
        this.matrixColumn = matrix[0].length;
    }
-public int getResultString(){
-       return resultString;
-}
-
-    public int getResultColumn() {
-        return resultColumn;
-    }
 
     public int getMatrixString(){
        return matrixString;
    }
-   public int getMatrixColumn(){
+    public int getMatrixColumn(){
        return matrixColumn;
    }
-   public int[][] getMatrix(){
-       return matrix;
+    public int[][] getMatrix(){
+       return this.matrix;
    }
 
     public void matrixAddition(int[][] matrix){
-       result = new int[this.resultString][this.resultColumn];
-       for (int i = 0;i < this.resultString; i++){
-           for (int j = 0; j < this.resultColumn;j++){
+        int[][] result = new int[matrixString][matrixColumn];
+       System.out.println("Сложение");
+       for (int i = 0;i < this.matrixString; i++){
+           for (int j = 0; j < this.matrixColumn;j++){
                result[i][j] = this.matrix[i][j]+matrix[i][j];
            }
        }
        matrixOutput(result);
    }
 
-    public void matrixCompare(int matrixString, int matrixColumn){
-       if (this.matrixString > matrixString){
-           if (this.matrixColumn > matrixColumn){
-               this.resultString = this.matrixString;
-               this.resultColumn = this.matrixColumn;
-           }else{
-               this.resultString = this.matrixString;
-               this.resultColumn = matrixColumn;
-           }
-       }else {
-           this.resultString = matrixString;
-           this.resultColumn = matrixColumn;
-       }
-    }
-
     public void matrixMultiplicationByNumber(int number){
+       int[][] result = new int[matrixString][matrixColumn];
+        System.out.println("Умножение на число");
        for (int i = 0;i < this.matrixString; i++){
            for (int j = 0; j < this.matrixColumn;j++){
-               this.result[i][j] = this.matrix[i][j]*number;
+               result[i][j] = this.matrix[i][j]*number;
            }
-   }
+       }
+        matrixOutput(result);
    }
 
     public void matrixOutput(int[][] result){
-           for (int i = 0; i < resultString; i++) {
-               for (int j = 0; j < resultColumn; j++) {
+           for (int i = 0; i < this.matrixString; i++) {
+               for (int j = 0; j < this.matrixColumn; j++) {
                    System.out.print(" " + result[i][j] + " ");
                }
                System.out.println();
@@ -80,11 +60,14 @@ public int getResultString(){
         System.out.println();
    }
 
-    public void MatrixMultiplication(int[][] matrix){
-       for (int i = 0;i < result.length; i++){
-           for (int j = 0; j < result[0].length;j++){
-               this.result[i][j] = this.matrix[i][j]*matrix[i][j];
+    public void matrixMultiplication(int[][] matrix){
+        int[][] result = new int[matrixString][matrixColumn];
+        System.out.println("Умножение");
+       for (int i = 0;i < this.matrixString; i++){
+           for (int j = 0; j < this.matrixColumn;j++){
+               result[i][j] = this.matrix[i][j]*matrix[i][j];
            }
        }
+        matrixOutput(result);
    }
 }
