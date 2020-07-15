@@ -1,14 +1,11 @@
 package by.academy.classwork.lesson5_2.task4;
 
-import java.util.ArrayList;
-
 public class Reader {
     private String userName;
     private int userTicket;
     private String userFaculty;
     private long userBDate;
     private int userPhoneNumber;
-    private int bookCount;
 
     public Reader(){
         super();
@@ -68,8 +65,8 @@ public class Reader {
 
     public void takeBook(String... userBooks){
         System.out.print(getUserName()+" взял книги: ");
-        for ( int i = 0; i < userBooks.length; i++) {
-            System.out.print(""+userBooks[i]+" ");
+        for (String userBook : userBooks) {
+            System.out.print("" + userBook + " ");
         }
         System.out.println();
     }
@@ -78,8 +75,8 @@ public class Reader {
     }
     public void returnBook(String... userBooks){
         System.out.print(getUserName()+" вернул книги: ");
-        for ( int i = 0; i < userBooks.length; i++) {
-            System.out.print(""+userBooks[i]+" ");
+        for (String userBook : userBooks) {
+            System.out.print("" + userBook + " ");
         }
         System.out.println();
     }
