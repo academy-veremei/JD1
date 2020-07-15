@@ -1,22 +1,24 @@
 package by.academy.classwork.lesson5_2.task4;
 
+import java.util.ArrayList;
+
 public class Reader {
     private String userName;
     private int userTicket;
     private String userFaculty;
-    private int userBirthDate;
+    private long userBDate;
     private int userPhoneNumber;
-    private String[] books;
+    private int bookCount;
 
     public Reader(){
         super();
     }
-    public Reader(String userName,int userTicket,String userFaculty,int userBirthDate,int userPhoneNumber){
+    public Reader(String userName,int userTicket,String userFaculty,long userBirthDate,int userPhoneNumber){
         super();
         this.userName = userName;
         this.userTicket = userTicket;
         this.userFaculty = userFaculty;
-        this.userBirthDate = userBirthDate;
+        this.userBDate = userBirthDate;
         this.userPhoneNumber = userPhoneNumber;
     }
 
@@ -32,8 +34,8 @@ public class Reader {
         return userFaculty;
     }
 
-    public int getUserBirthDate() {
-        return userBirthDate;
+    public long getUserBirthDate() {
+        return userBDate;
     }
 
     public int getUserPhoneNumber() {
@@ -52,14 +54,34 @@ public class Reader {
         this.userFaculty = userFaculty;
     }
 
-    public void setUserBirthDate(int userBirthDate) {
-        this.userBirthDate = userBirthDate;
+    public void setUserBirthDate(long userBirthDate) {
+        this.userBDate = userBirthDate;
     }
 
     public void setUserPhoneNumber(int userPhoneNumber) {
         this.userPhoneNumber = userPhoneNumber;
     }
 
-    public void takeBook(){}
-    public void returnBook(){}
+    public void takeBook(int book){
+        System.out.println(userName+" взял "+book+" книги.");
+    }
+
+    public void takeBook(String... userBooks){
+        System.out.print(getUserName()+" взял книги: ");
+        for ( int i = 0; i < userBooks.length; i++) {
+            System.out.print(""+userBooks[i]+" ");
+        }
+        System.out.println();
+    }
+    public void returnBook(int book){
+        System.out.println(userName+" вернул "+book+" книги.");
+    }
+    public void returnBook(String... userBooks){
+        System.out.print(getUserName()+" вернул книги: ");
+        for ( int i = 0; i < userBooks.length; i++) {
+            System.out.print(""+userBooks[i]+" ");
+        }
+        System.out.println();
+    }
+
 }
