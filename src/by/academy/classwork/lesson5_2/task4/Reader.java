@@ -7,10 +7,11 @@ public class Reader {
     private long userBDate;
     private int userPhoneNumber;
 
-    public Reader(){
+    public Reader() {
         super();
     }
-    public Reader(String userName,int userTicket,String userFaculty,long userBirthDate,int userPhoneNumber){
+
+    public Reader(String userName, int userTicket, String userFaculty, long userBirthDate, int userPhoneNumber) {
         super();
         this.userName = userName;
         this.userTicket = userTicket;
@@ -43,7 +44,7 @@ public class Reader {
         this.userName = userName;
     }
 
-    public void setUserTicket(){
+    public void setUserTicket() {
         this.userTicket = userTicket;
     }
 
@@ -59,22 +60,24 @@ public class Reader {
         this.userPhoneNumber = userPhoneNumber;
     }
 
-    public void takeBook(int book){
-        System.out.println(userName+" взял "+book+" книги.");
+    public void takeBook(int book) {
+        System.out.println(userName + " взял " + book + " книги.");
     }
 
-    public void takeBook(String... userBooks){
-        System.out.print(getUserName()+" взял книги: ");
+    public void takeBook(String... userBooks) {
+        System.out.print(getUserName() + " взял книги: ");
         for (String userBook : userBooks) {
             System.out.print("" + userBook + " ");
         }
         System.out.println();
     }
-    public void returnBook(int book){
-        System.out.println(userName+" вернул "+book+" книги.");
+
+    public void returnBook(int book) {
+        System.out.println(userName + " вернул " + book + " книги.");
     }
-    public void returnBook(String... userBooks){
-        System.out.print(getUserName()+" вернул книги: ");
+
+    public void returnBook(String... userBooks) {
+        System.out.print(getUserName() + " вернул книги: ");
         for (String userBook : userBooks) {
             System.out.print("" + userBook + " ");
         }

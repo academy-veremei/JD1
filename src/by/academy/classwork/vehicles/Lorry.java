@@ -1,12 +1,13 @@
 package by.academy.classwork.vehicles;
 
-public class Lorry extends Car{
+public class Lorry extends Car {
     private int carCarrying;
 
-    public Lorry(){
+    public Lorry() {
         super();
     }
-    public Lorry(int carCarrying){
+
+    public Lorry(int carCarrying) {
         super();
         this.carCarrying = carCarrying;
     }

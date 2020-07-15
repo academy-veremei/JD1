@@ -34,7 +34,16 @@ public class Product{
         this.productQuantity = productQuantity;
     }
 
+    private double calculateDiscount(){
+        double productDiscount;
+        if (productQuantity > 5){
+            productDiscount = 0.8;
+        }else
+            productDiscount = 1;
+        return productDiscount;
+    }
+
     public double productsCost(){
-        return productQuantity*productPrice;
+        return productQuantity*productPrice*calculateDiscount();
     }
 }

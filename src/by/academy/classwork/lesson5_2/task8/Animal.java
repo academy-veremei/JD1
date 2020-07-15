@@ -7,20 +7,22 @@ public class Animal {
     public Animal() {
         super();
     }
-    public Animal(String food,String location){
+
+    public Animal(String food, String location) {
         super();
         this.food = food;
         this.location = location;
     }
 
-
-    public void makeNoise(){
+    public void makeNoise() {
         System.out.println("Животное шумит");
     }
-    public void eat(){
+
+    public void eat() {
         System.out.println("Животное ест");
     }
-    public void sleep(){
+
+    public void sleep() {
         System.out.println("Животное спит");
     }
 

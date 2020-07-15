@@ -1,12 +1,13 @@
 package by.academy.classwork.vehicles;
 
-public class SportCar extends Car{
+public class SportCar extends Car {
     private int carSpeed;
 
-    public SportCar(){
+    public SportCar() {
         super();
     }
-    public SportCar(int carCarrying){
+
+    public SportCar(int carCarrying) {
         super();
         this.carSpeed = carSpeed;
     }

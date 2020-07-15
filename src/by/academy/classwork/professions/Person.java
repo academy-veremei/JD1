@@ -1,12 +1,13 @@
 package by.academy.classwork.professions;
 
-public class Person extends Driver{
+public class Person extends Driver {
     private int age;
 
-    public Person(){
+    public Person() {
         super();
     }
-    public Person(int age){
+
+    public Person(int age) {
         super();
         this.age = age;
     }

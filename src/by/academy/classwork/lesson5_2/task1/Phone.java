@@ -5,48 +5,60 @@ public class Phone {
     private String model;
     private double weight;
 
-    public Phone(){
+    public Phone() {
         super();
     }
-    public Phone(int number,String model,double weight){
+
+    public Phone(int number, String model, double weight) {
         super();
         this.number = number;
         this.model = model;
         this.weight = weight;
     }
-    public void setPhone(int number,String model,double weight){
+
+    public void setPhone(int number, String model, double weight) {
         this.model = model;
         this.number = number;
         this.weight = weight;
     }
-    public void setPhone(int number,double weight){
+
+    public void setPhone(int number, double weight) {
         this.number = number;
         this.weight = weight;
     }
-    public int getNumber(){
-        return  number;
+
+    public int getNumber() {
+        return number;
     }
-    public void setNumber(int number){
+
+    public void setNumber(int number) {
         this.number = number;
     }
-    public String getModel(){
+
+    public String getModel() {
         return model;
     }
-    public void setModel(String model){
+
+    public void setModel(String model) {
         this.model = model;
     }
-    public double getWeight(){
+
+    public double getWeight() {
         return weight;
     }
-    public void setWeight(double weight){
+
+    public void setWeight(double weight) {
         this.weight = weight;
     }
-    public void receiveCall(String name){
-        System.out.println("Звонит "+name);
+
+    public void receiveCall(String name) {
+        System.out.println("Звонит " + name);
     }
-    public void sendMessage(int... number){
+
+    public void sendMessage(int... number) {
         for (int i : number) {
             System.out.print(i + " ");
         }
     }
+
 }

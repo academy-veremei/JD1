@@ -4,10 +4,11 @@ public class Engine {
     private int enginePower;
     private String engineManufacturer;
 
-    public Engine(){
+    public Engine() {
         super();
     }
-    public Engine(int enginePower,String engineManufacturer){
+
+    public Engine(int enginePower, String engineManufacturer) {
         super();
         this.enginePower = enginePower;
         this.engineManufacturer = engineManufacturer;
