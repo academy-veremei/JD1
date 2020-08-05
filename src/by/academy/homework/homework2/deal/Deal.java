@@ -1,11 +1,6 @@
 package by.academy.homework.homework2.deal;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
 
 public class Deal {
     private User seller;
@@ -15,6 +10,8 @@ public class Deal {
 
     StringBuilder stringBuilder = new StringBuilder();
     Scanner scanner = new Scanner(System.in);
+    ArrayList<Product> shoppingCart = new ArrayList<>();
+    ArrayList<String> productId = new ArrayList<>();
 
     public Deal() {
         super();
@@ -81,7 +78,7 @@ public class Deal {
             isNextProduct = scanner.nextInt();
 
         } while (isNextProduct != 2);
-        checkCart();
+        printCart();
         productMenu();
     }
 
@@ -93,8 +90,8 @@ public class Deal {
      * удалить, товар удаляется, пересчитывается итоговая сумма по сделке и выводится новый список товаров.
      * Метод productMenu() перезапускается.
      *
-     * При выборе варианта "завершить сделку" программа возвращается в метод startNewDeal() класса Main для ввода новой
-     * сделки или вывода итогового чека.
+     * При выборе варианта "завершить сделку" запускается метод checkCart() для формирования чека по сделке и программа
+     * возвращается в метод startNewDeal() класса Main для ввода новой сделки или вывода итогового чека.
      */
     public void productMenu() {
         System.out.println("Введите:\n" + "1 - Для того чтобы добавить товары\n" + "2 - Для того чтобы удалить товары\n"
@@ -105,11 +102,10 @@ public class Deal {
             newProduct();
         } else if (productMenu == 2) {
             deleteFromCart();
-            checkCart();
             productMenu();
         }
         if (productMenu == 3) {
-            return;
+            checkCart();
         }
     }
 
@@ -129,7 +125,7 @@ public class Deal {
         System.out.println("Введите цену товара:");
         apple.setProductPrice(scanner.nextInt());
 
-        addToCart(apple.getProductName(), apple.getProductQuantity(), apple.getProductPrice(), apple.productsCost());
+        addToCart(apple.getProductName(), apple);
     }
 
     public void productHuawei(String productName) {
@@ -142,7 +138,7 @@ public class Deal {
         System.out.println("Введите цену товара:");
         huawei.setProductPrice(scanner.nextInt());
 
-        addToCart(huawei.getProductName(), huawei.getProductQuantity(), huawei.getProductPrice(), huawei.productsCost());
+        addToCart(huawei.getProductName(), huawei);
     }
 
     public void productXiaomi(String productName) {
@@ -155,7 +151,7 @@ public class Deal {
         System.out.println("Введите цену товара:");
         xiaomi.setProductPrice(scanner.nextInt());
 
-        addToCart(xiaomi.getProductName(), xiaomi.getProductQuantity(), xiaomi.getProductPrice(), xiaomi.productsCost());
+        addToCart(xiaomi.getProductName(), xiaomi);
     }
 
     public void productDefault(String productName) {
@@ -168,55 +164,63 @@ public class Deal {
         System.out.println("Введите цену товара:");
         product.setProductPrice(scanner.nextInt());
 
-        addToCart(product.getProductName(), product.getProductQuantity(), product.getProductPrice(), product.productsCost());
+        addToCart(product.getProductName(), product);
     }
 
     /*
-     * Работа с корзиной товаров
-     * (Попытка сделать ввод неограниченного числа товаров не используя коллекции :) )
+     * Работа с корзиной товаров (Через ArrayList)
      *
-     * 1. Метод addToCart() добавляет информацию о товаре в StringBuilder.
+     * 1. Метод addToCart() добавляет имя товара в ArrayList productId и сам товар в ArrayList shoppingCart.
      *
-     * 2. Метод deleteFromCart(). Вводится название продукта который необходимо удалить, идет поиск товара по паттерну:
-     *                 "Название:<введенное название> Колличество:* Цена:* Сумма:* "
-     * находятся начало и конец строки с товаром и товар удаляется, выводится сообщение "Товар удален", если
-     * продукт с таким названием не находится, выводится сообщение "Такого товара нет".
+     * 2. Метод deleteFromCart(). Вводится название продукта который необходимо удалить, при помощи метода contains
+     * идет поиск товара по названию в листе productId, если товар с таким именем существует, товар удаляется из
+     * shoppingCart по индексу из productId затем удаляется из самого productId, выводится сообщение "Товар удален".
+     * Если продукт с таким названием не находится, выводится сообщение "Такого товара нет".
+     * Метод printCart() выводит список товаров и итоговую сумму по сделке.
      *
-     * 3. Метод checkCart(). При вызове метода происходит поиск товаров по паттерну:
-     * "Название:<Название на русском или английском> Колличество:<число> Цена:<число с плав.точкой>
-     * Сумма:<число с плав.точкой> "
-     * Значение "Сумма:<число с плав.точкой>" парсится в double и подсчитывается итоговая сумма по сделке.
+     * 3. Метод checkCart(). При вызове метода происходит формирование итогового чека по сделке.
      */
 
-    public void addToCart(String name, long quantity, double price, double productCost) {
-        stringBuilder.append(" ").append("Название:").append(name).append(" ").append("Колличество:").append(quantity).append(" ")
-                .append("Цена:").append(price).append(" ").append("Сумма:").append(productCost).append("\n");
+    public void addToCart(String name, Product product) {
+        productId.add(name);
+        shoppingCart.add(product);
     }
 
     public void deleteFromCart() {
         System.out.println("Введите название товара который хотите удалить:");
         String string = scanner.next();
-        Pattern patternDelProduct = Pattern.compile("([а-яА-Я]+[:])" + string + " ([а-яА-Я]+[:])([\\d]+) " +
-                "([а-яА-Я]+[:])([\\d]+[.][\\d]+) ([а-яА-Я]+[:])([\\d]+[.][\\d]+)");
-        Matcher matcherDelProduct = patternDelProduct.matcher(stringBuilder);
-        if (matcherDelProduct.find()) {
-            stringBuilder.delete(matcherDelProduct.start(), matcherDelProduct.end());
+        if (productId.contains(string)) {
+            shoppingCart.remove(productId.indexOf(string));
+            productId.remove(string);
             System.out.println("Товар удалён.");
         } else {
             System.out.println("Такого товара нет.");
         }
+        printCart();
     }
 
-    public void checkCart() {
-        Pattern patternProduct = Pattern.compile("([а-яА-Я]+[:])([а-яА-Я]+|[a-zA-Z+]+) ([а-яА-Я]+[:])([\\d]+) " +
-                "([а-яА-Я]+[:])([\\d]+[.][\\d]+) ([а-яА-Я]+[:])([\\d]+[.][\\d]+)");
-        Matcher matcherProduct = patternProduct.matcher(stringBuilder);
+    public void printCart() {
         dealCost = 0;
-        while (matcherProduct.find()) {
-            System.out.println(matcherProduct.group(0));
-            dealCost += Double.parseDouble(matcherProduct.group(8));
+        for (int i = 0; i < productId.size(); i++) {
+            System.out.println("Название: "+shoppingCart.get(i).productName+" Количество: "
+                    +shoppingCart.get(i).productQuantity+" Цена: "+shoppingCart.get(i).productPrice+" Сумма: "
+                    +shoppingCart.get(i).productsCost());
+            dealCost += shoppingCart.get(i).productsCost();
         }
         System.out.println("Итоговая сумма по сделке: " + dealCost);
+    }
+
+    public void checkCart(){
+        dealCost = 0;
+        for (int i = 0; i < productId.size(); i++) {
+            stringBuilder.append(" ").append("Название:").append(shoppingCart.get(i).productName)
+                    .append(" ").append(" Количество:").append(shoppingCart.get(i).productQuantity)
+                    .append(" ").append(" Цена:").append(shoppingCart.get(i).productPrice)
+                    .append(" ").append(" Сумма:").append(shoppingCart.get(i).productsCost()).append("\n");
+            dealCost += shoppingCart.get(i).productsCost();
+        }
+        System.out.println("Итоговая сумма по сделке: " + dealCost);
+
     }
 
     @Override

@@ -4,15 +4,18 @@ import by.academy.homework.homework2.BelarusPhoneValidator;
 import by.academy.homework.homework2.EmailValidator;
 import by.academy.homework.homework2.Validator;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class User {
     private String userName;
-    private String userDateOfBirth;
+    private LocalDate userDateOfBirth;
     private String userPhoneNumber;
     private String userEmail;
+    private int formatOfDate = 0;
 
     public User() {
         super();
@@ -35,8 +38,12 @@ class User {
         Matcher matcherB = patternB.matcher(stringDate);
 
         if (matcherA.find()) {
+            formatOfDate = 1;
             return true;
-        } else return matcherB.find();
+        } else {
+            formatOfDate = 2;
+            return matcherB.find();
+        }
     }
 
     public void inputUserData(String name) {
@@ -48,10 +55,14 @@ class User {
         System.out.println("Введите имя " + name);
 
         userName = scanner.nextLine();
+
+        String userDateOfBirthInput = null;
         do {
             System.out.println("Введите дату рождения в формате dd/MM/yyyy или dd-MM-yyyy");
-            userDateOfBirth = scanner.nextLine();
-        } while (!isValidDateString(userDateOfBirth));
+            userDateOfBirthInput = scanner.nextLine();
+        } while (!isValidDateString(userDateOfBirthInput));
+        createDateOfBirth(userDateOfBirthInput);
+
         do {
             System.out.println("Введите номер телефона формата +375********* :");
             userPhoneNumber = scanner.nextLine();
@@ -60,6 +71,18 @@ class User {
             System.out.println("Введите email:");
             userEmail = scanner.nextLine();
         } while (!emailValidator.validate(userEmail));
+    }
+
+    private void createDateOfBirth(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        if (formatOfDate == 1) {
+            userDateOfBirth = LocalDate.parse(date, formatter2);
+        }else {
+            userDateOfBirth = LocalDate.parse(date, formatter);
+        }
+
     }
 
     @Override
