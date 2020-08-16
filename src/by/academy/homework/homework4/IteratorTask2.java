@@ -8,7 +8,7 @@ public class IteratorTask2<T> implements Iterator<T> {
     private int counter;
 
     public IteratorTask2(ArrayList<T> list) {
-        arrList = new ArrayList<T>(list);
+        arrList = new ArrayList<>(list);
     }
 
     @Override
