@@ -11,6 +11,9 @@
  */
 package by.academy.homework.homework4;
 
+import by.academy.homework.homework4.universal_iterator.ListIterator;
+import by.academy.homework.homework4.universal_iterator.MyUniversalIterator;
+
 import java.util.ArrayList;
 
 public class Task2 {
@@ -29,7 +32,7 @@ public class Task2 {
         arrayList.add("Ученик4");
         arrayList.add("6");
 
-        IteratorTask2<String> iterator = new IteratorTask2<>(arrayList);
+        MyUniversalIterator<String> iterator = new ListIterator<>(arrayList);
 
         while (iterator.hasNext()) {
             element = iterator.next();
