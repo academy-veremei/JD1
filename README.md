@@ -41,3 +41,7 @@
 * [Task1](https://github.com/academy-veremei/academy/blob/master/src/by/academy/homework/homework6/Task1.java)
 * [Task2](https://github.com/academy-veremei/academy/blob/master/src/by/academy/homework/homework6/Task2.java)
 * [Task3](https://github.com/academy-veremei/junit/tree/master/src)
+
+**[Homework #7 Многопоточность.](https://github.com/academy-veremei/academy/tree/master/src/by/academy/homework/homework7)**
+
+* [Task1](https://github.com/academy-veremei/academy/tree/master/src/by/academy/homework/homework7)
