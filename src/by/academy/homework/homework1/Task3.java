@@ -17,16 +17,17 @@ public class Task3 {
         System.out.println("Введите число от 1 до 10");
         number = scanner.nextInt();
         scanner.close();
-        if(number > 0 && number < 11){
+        if (number > 0 && number < 11) {
             multipleTable(number);
-        }else{
+        } else {
             System.out.println("Введенное число вне диапазона [1;10]");
         }
 
     }
-    public static void multipleTable(int number){
-        for(int i = 1;i < 11;i++){
-            System.out.println(number+" x "+i+" = "+(number*i));
+
+    public static void multipleTable(int number) {
+        for (int i = 1; i < 11; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
         }
     }
 }

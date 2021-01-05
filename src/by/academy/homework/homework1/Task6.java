@@ -21,22 +21,22 @@ public class Task6 {
         System.out.println("Второе слово");
         secondWord = scanner.nextLine();
         scanner.close();
-        if(firstWord.length() != secondWord.length()){
+        if (firstWord.length() != secondWord.length()) {
             System.out.println("false");
-        }else{
-            for(int i = 0;i < firstWord.length();i++){
+        } else {
+            for (int i = 0; i < firstWord.length(); i++) {
                 char firstChar = firstWord.charAt(i);
-                for(int j = 0;j < secondWord.length();j++){
-                    if(firstChar == secondWord.charAt(j)){
+                for (int j = 0; j < secondWord.length(); j++) {
+                    if (firstChar == secondWord.charAt(j)) {
                         counter++;
                         break;
                     }
                 }
             }
         }
-        if(counter == secondWord.length()){
+        if (counter == secondWord.length()) {
             System.out.println("true");
-        }else{
+        } else {
             System.out.println("false");
         }
     }

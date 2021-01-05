@@ -17,7 +17,7 @@ public class Task2 {
         System.out.println("Тип данных:");
         dataType = scanner.nextLine().toLowerCase();
         System.out.println("Переменная:");
-        switch (dataType){
+        switch (dataType) {
             case "int":
                 int dataInt = scanner.nextInt();
                 System.out.println(dataInt % 2);
@@ -32,13 +32,13 @@ public class Task2 {
                 break;
             case "char":
                 String dataChar = scanner.nextLine();
-                for(int i = 0;i < dataChar.length();i++){
-                    System.out.println((int)dataChar.charAt(i));
+                for (int i = 0; i < dataChar.length(); i++) {
+                    System.out.println((int) dataChar.charAt(i));
                 }
                 break;
             case "string":
                 String dataString = scanner.nextLine();
-                System.out.println("Hello "+dataString);
+                System.out.println("Hello " + dataString);
                 break;
             default:
                 System.out.println("Unsupported type");
